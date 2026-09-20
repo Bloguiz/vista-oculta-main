@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vista Oculta</title>
+    <meta name="description" content="Artigo — Vista Oculta" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <header class="site-header" id="header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="index.html" class="logo" aria-label="Vista Oculta">
+            <img class="logo-img" src="https://cdn.jsdelivr.net/gh/bloguiz/vista-oculta-assets@main/logos/logo-vo-principal-com-texto.png" alt="Vista Oculta" />
+          </a>
+          <nav class="nav-main">
+            <a href="index.html#posts">Posts</a>
+            <a href="index.html#sobre">Sobre</a>
+            <a href="index.html#contacto">Contacto</a>
+            <a href="admin/" class="nav-cta">Admin</a>
+          </nav>
+          <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <nav class="mobile-nav" id="mobileNav">
+      <button class="mobile-nav-close" id="mobileNavClose">×</button>
+      <ul class="mobile-nav-links">
+        <li><a href="index.html#posts">Posts</a></li>
+        <li><a href="index.html#sobre">Sobre</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+        <li><a href="admin/">Admin</a></li>
+      </ul>
+    </nav>
+
+    <main id="postView"></main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <p class="footer-copyright" id="footerCopyright">© 2026 Vista Oculta</p>
+          <div class="footer-social" id="footerSocial">
+            <a href="index.html">Início</a>
+          </div>
+        </div>
+        <div class="bloguiz-signature">
+          Desenvolvido por <a href="https://bloguiz.com" target="_blank" rel="noopener">BLOGUIZ</a>
+        </div>
+      </div>
+    </footer>
+<script src="config.js"></script>
+    <script src="assets/blog.js"></script>
+  </body>
+</html>

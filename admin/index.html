@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin — Vista Oculta</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600&family=DM+Sans:ital,wght@0,400;0,500;0,600&family=Lora:ital,wght@0,400;0,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/style.css" />
+  </head>
+  <body>
+    <div class="auth-gate" id="authGate">
+      <div class="auth-card" style="max-width:480px">
+        <h2>Área privada</h2>
+        <p>Liga o admin ao teu repositório GitHub. O token fica apenas nesta sessão do browser.</p>
+
+        <div class="form-row">
+          <label for="gh-user">Utilizador GitHub</label>
+          <input type="text" id="gh-user" placeholder="ex: joaosilva" autocomplete="username" />
+        </div>
+        <div class="form-row">
+          <label for="gh-repo">Repositório</label>
+          <input type="text" id="gh-repo" placeholder="ex: vista-oculta" />
+        </div>
+        <div class="form-row">
+          <label for="gh-branch">Branch</label>
+          <input type="text" id="gh-branch" placeholder="main" value="main" />
+        </div>
+        <div class="form-row">
+          <label for="gh-token">Token (Fine-grained PAT com Contents: RW)</label>
+          <input type="password" id="gh-token" placeholder="github_pat_..." autocomplete="off" />
+        </div>
+
+        <div class="auth-error" id="authError"></div>
+        <button class="btn" id="authBtn" style="width:100%">Entrar</button>
+
+        <p style="margin-top:18px;font-size:.78rem;text-align:left;line-height:1.6">
+          Cria o token em
+          <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener" style="color:var(--green);font-weight:600">github.com/settings/personal-access-tokens/new</a>
+          → Repository access: <em>só este repo</em> → Permissions: <strong>Contents: Read and write</strong>.
+        </p>
+      </div>
+    </div>
+
+    <header class="site-header scrolled">
+      <div class="container">
+        <div class="header-inner">
+          <a href="../index.html" class="logo" aria-label="Vista Oculta">
+            <img class="logo-img" src="https://cdn.jsdelivr.net/gh/bloguiz/vista-oculta-assets@main/logos/logo-vo-principal-com-texto.png" alt="Vista Oculta" />
+          </a>
+          <nav class="nav-main">
+            <a href="../index.html" target="_blank" rel="noopener">Ver blog ↗</a>
+            <button class="nav-cta" id="logoutBtn" style="background:none;cursor:pointer">Sair</button>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="admin-shell">
+      <div class="admin-tabs">
+        <button class="admin-tab active" data-tab="new">Novo post</button>
+        <button class="admin-tab" data-tab="list">Publicados</button>
+        <button class="admin-tab" data-tab="site">Página</button>
+        <button class="admin-tab" data-tab="data">Dados</button>
+      </div>
+
+      <section class="admin-panel active" id="panel-new">
+        <div class="hint">
+          Os posts vão <strong>diretamente para o GitHub</strong> (commit em <code>posts.json</code>).
+          O site público lê via jsDelivr — atualiza em segundos.
+        </div>
+
+        <div class="form-row">
+          <label for="post-title">Título</label>
+          <input type="text" id="post-title" placeholder="Ex: O miradouro escondido a 20 minutos do centro" />
+        </div>
+
+        <div class="form-row">
+          <label for="post-date">Data</label>
+          <input type="date" id="post-date" />
+        </div>
+
+        <div class="form-row">
+          <label for="post-image">Imagem de destaque (URL)</label>
+          <input type="text" id="post-image" placeholder="https://cdn.jsdelivr.net/gh/USER/REPO@main/imagens/foto.jpg" />
+          <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+            <button type="button" class="btn btn-secondary btn-sm" id="btn-github-destaque">📦 Enviar imagem para o GitHub</button>
+          </div>
+          <input type="file" id="post-image-file" accept="image/*" style="display:none" />
+        </div>
+
+        <div class="form-row">
+          <label>Conteúdo</label>
+          <div class="editor-toolbar" id="editor-toolbar">
+            <button type="button" data-cmd="bold"><b>B</b></button>
+            <button type="button" data-cmd="italic"><i>I</i></button>
+            <button type="button" data-cmd="underline"><u>U</u></button>
+            <span class="sep"></span>
+            <button type="button" data-cmd="formatBlock" data-val="h2">H2</button>
+            <button type="button" data-cmd="formatBlock" data-val="h3">H3</button>
+            <button type="button" data-cmd="formatBlock" data-val="p">¶</button>
+            <button type="button" data-cmd="formatBlock" data-val="blockquote">"</button>
+            <span class="sep"></span>
+            <button type="button" data-cmd="insertUnorderedList">• Lista</button>
+            <button type="button" data-cmd="insertOrderedList">1. Lista</button>
+            <span class="sep"></span>
+            <button type="button" id="btn-link">🔗 Link</button>
+            <button type="button" id="btn-github-img">📦 Imagem</button>
+            <button type="button" id="btn-video">▶ Vídeo</button>
+            <span class="sep"></span>
+            <button type="button" data-cmd="removeFormat">Limpar</button>
+          </div>
+          <div class="editor" id="editor" contenteditable="true"></div>
+          <input type="file" id="inline-image-file" accept="image/*" style="display:none" />
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+          <button class="btn" id="btn-save">Guardar e publicar</button>
+          <button class="btn btn-secondary" id="btn-clear">Limpar formulário</button>
+        </div>
+      </section>
+
+      <section class="admin-panel" id="panel-list">
+        <div class="hint">
+          Estes posts estão em <code>posts.json</code> no GitHub. Editar ou remover faz commit imediato.
+        </div>
+        <div class="post-list" id="post-list"></div>
+      </section>
+
+      <section class="admin-panel" id="panel-site">
+        <div class="hint">
+          Tudo o que aparece no site público (textos, imagens, links, rodapé).
+          Guardar faz commit em <code>site.json</code>.
+        </div>
+
+        <fieldset class="admin-fieldset">
+          <legend>Marca</legend>
+          <div class="admin-grid">
+            <div class="form-row"><label for="brand-name">Nome</label><input type="text" id="brand-name" /></div>
+            <div class="form-row"><label for="brand-logo">Logo (com texto)</label><input type="text" id="brand-logo" /></div>
+            <div class="form-row"><label for="brand-logoIcon">Logo (ícone/rodapé)</label><input type="text" id="brand-logoIcon" /></div>
+            <div class="form-row"><label for="brand-favicon">Favicon</label><input type="text" id="brand-favicon" /></div>
+          </div>
+        </fieldset>
+
+        <fieldset class="admin-fieldset">
+          <legend>Hero</legend>
+          <div class="form-row"><label for="hero-tagline">Tagline</label><input type="text" id="hero-tagline" /></div>
+          <div class="form-row"><label for="hero-title">Título (aceita HTML)</label><input type="text" id="hero-title" /></div>
+          <div class="form-row"><label for="hero-description">Descrição</label><textarea id="hero-description" rows="3"></textarea></div>
+          <div class="admin-grid">
+            <div class="form-row"><label for="hero-cta1-label">Botão primário — texto</label><input type="text" id="hero-cta1-label" /></div>
+            <div class="form-row"><label for="hero-cta1-href">Botão primário — link</label><input type="text" id="hero-cta1-href" /></div>
+            <div class="form-row"><label for="hero-cta2-label">Botão secundário — texto</label><input type="text" id="hero-cta2-label" /></div>
+            <div class="form-row"><label for="hero-cta2-href">Botão secundário — link</label><input type="text" id="hero-cta2-href" /></div>
+          </div>
+          <div class="form-row"><label for="hero-fallbackImage">Imagem de recurso</label><input type="text" id="hero-fallbackImage" /></div>
+        </fieldset>
+
+        <fieldset class="admin-fieldset">
+          <legend>Secção "Todos os posts"</legend>
+          <div class="form-row"><label for="posts-label">Etiqueta</label><input type="text" id="posts-label" /></div>
+          <div class="form-row"><label for="posts-title">Título</label><input type="text" id="posts-title" /></div>
+          <div class="form-row"><label for="posts-subtitle">Subtítulo</label><input type="text" id="posts-subtitle" /></div>
+        </fieldset>
+
+        <fieldset class="admin-fieldset">
+          <legend>Sobre</legend>
+          <div class="admin-grid">
+            <div class="form-row"><label for="about-label">Etiqueta</label><input type="text" id="about-label" /></div>
+            <div class="form-row"><label for="about-title">Título</label><input type="text" id="about-title" /></div>
+            <div class="form-row"><label for="about-badge">Badge</label><input type="text" id="about-badge" /></div>
+            <div class="form-row"><label for="about-ctaLabel">Texto do botão</label><input type="text" id="about-ctaLabel" /></div>
+          </div>
+          <div class="form-row"><label for="about-paragraphs">Parágrafos (um por linha)</label><textarea id="about-paragraphs" rows="5"></textarea></div>
+          <div class="form-row"><label for="about-image">Imagem</label><input type="text" id="about-image" /></div>
+        </fieldset>
+
+        <fieldset class="admin-fieldset">
+          <legend>Contacto</legend>
+          <div class="admin-grid">
+            <div class="form-row"><label for="contact-label">Etiqueta</label><input type="text" id="contact-label" /></div>
+            <div class="form-row"><label for="contact-title">Título</label><input type="text" id="contact-title" /></div>
+          </div>
+          <div class="form-row"><label for="contact-description">Descrição</label><textarea id="contact-description" rows="3"></textarea></div>
+          <div class="form-row"><label for="contact-email">Email</label><input type="text" id="contact-email" /></div>
+        </fieldset>
+
+        <fieldset class="admin-fieldset">
+          <legend>Rodapé</legend>
+          <div class="form-row"><label for="footer-tagline">Frase</label><textarea id="footer-tagline" rows="2"></textarea></div>
+          <div class="admin-grid">
+            <div class="form-row"><label for="footer-email">Email</label><input type="text" id="footer-email" /></div>
+            <div class="form-row"><label for="footer-copyright">Copyright</label><input type="text" id="footer-copyright" /></div>
+          </div>
+          <div class="form-row"><label for="footer-social">Links sociais (formato: Texto|URL, um por linha)</label><textarea id="footer-social" rows="4"></textarea></div>
+          <div class="form-row"><label for="footer-credits">Créditos</label><input type="text" id="footer-credits" /></div>
+        </fieldset>
+
+        <fieldset class="admin-fieldset">
+          <legend>SEO</legend>
+          <div class="form-row"><label for="seo-title">Título</label><input type="text" id="seo-title" /></div>
+          <div class="form-row"><label for="seo-description">Descrição</label><textarea id="seo-description" rows="3"></textarea></div>
+          <div class="form-row"><label for="seo-ogImage">Imagem OG</label><input type="text" id="seo-ogImage" /></div>
+        </fieldset>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+          <button class="btn" id="btn-site-save">Guardar e publicar</button>
+          <button class="btn btn-secondary" id="btn-site-reload">Recarregar do GitHub</button>
+        </div>
+      </section>
+
+      <section class="admin-panel" id="panel-data">
+        <div class="hint">
+          Pré-visualização dos ficheiros atualmente no GitHub. Para editar,
+          usa os separadores "Novo post" e "Página".
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn btn-secondary" id="btn-reload">Recarregar do GitHub</button>
+        </div>
+
+        <div class="form-row" style="margin-top:24px">
+          <label>posts.json</label>
+          <textarea id="data-preview" style="min-height:240px;font-family:monospace;font-size:12px" readonly></textarea>
+        </div>
+        <div class="form-row">
+          <label>site.json</label>
+          <textarea id="data-preview-site" style="min-height:240px;font-family:monospace;font-size:12px" readonly></textarea>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" style="padding:32px 0 16px">
+      <div class="container">
+        <div class="bloguiz-signature">
+          Desenvolvido por <a href="https://bloguiz.com" target="_blank" rel="noopener">BLOGUIZ</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../assets/admin.js"></script>
+  </body>
+</html>

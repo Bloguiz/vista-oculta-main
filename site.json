@@ -1,0 +1,55 @@
+{
+  "brand": {
+    "name": "Vista Oculta",
+    "logo": "https://cdn.jsdelivr.net/gh/bloguiz/vista-oculta-assets@main/logos/logo-vo-principal-com-texto.png",
+    "logoIcon": "https://cdn.jsdelivr.net/gh/bloguiz/vista-oculta-assets@main/logos/logo-vo-sem-texto.png",
+    "favicon": "https://cdn.jsdelivr.net/gh/bloguiz/vista-oculta-assets@main/logos/logo-vo-sem-texto.png"
+  },
+  "hero": {
+    "tagline": "Miradouros secretos · Desde sempre",
+    "title": "Onde a cidade<br>acaba e a <em>vista</em> começa",
+    "description": "Roteiros, caminhos e ângulos que quase ninguém conhece. Lugares escondidos a menos de 30 minutos de ti — explicados passo a passo, com fotos reais e o melhor momento do dia.",
+    "ctaPrimary": { "label": "Ver posts", "href": "#posts" },
+    "ctaSecondary": { "label": "Sobre o blog", "href": "#sobre" },
+    "fallbackImage": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600"
+  },
+  "postsSection": {
+    "label": "Descobrir",
+    "title": "Todos os posts",
+    "subtitle": "Roteiros, trilhos e miradouros escondidos — atualizados todas as semanas"
+  },
+  "about": {
+    "label": "Sobre o projeto",
+    "title": "Um blog para quem olha em volta",
+    "paragraphs": [
+      "O Vista Oculta nasceu da vontade de mostrar o que os guias turísticos ignoram. Aqui encontras miradouros, trilhos e ângulos escondidos — explicados passo a passo, com fotos reais e o melhor momento do dia para subir.",
+      "Cada lugar que partilhamos existe. Cada caminho foi percorrido. Cada imagem foi tirada por nós. Não inventamos coordenadas nem copiamos roteiros de outros blogs.",
+      "Não vendemos tours nem ganhamos comissões. Escrevemos porque gostamos de descobrir — e porque acreditamos que os melhores lugares são aqueles que continuam meio secretos."
+    ],
+    "badge": "Desde 2026",
+    "image": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=900",
+    "ctaLabel": "Explorar posts"
+  },
+  "contact": {
+    "label": "Contacto",
+    "title": "Conheces um lugar escondido?",
+    "description": "Envia-nos a tua descoberta. Se fizer sentido para o blog, publicamos com crédito e link para o teu projeto.",
+    "email": "blogueirinho00@gmail.com"
+  },
+  "footer": {
+    "tagline": "Miradouros secretos, trilhos escondidos e paisagens que quase ninguém conhece. Um blog independente, feito em Portugal.",
+    "email": "blogueirinho00@gmail.com",
+    "social": [
+      { "label": "Instagram", "href": "https://instagram.com" },
+      { "label": "Facebook",  "href": "https://facebook.com" },
+      { "label": "Newsletter","href": "#" }
+    ],
+    "copyright": "© 2026 Vista Oculta",
+    "credits": "Imagens: Unsplash"
+  },
+  "seo": {
+    "title": "Vista Oculta — Miradouros secretos",
+    "description": "Miradouros secretos, trilhos escondidos e paisagens que quase ninguém conhece. Roteiros detalhados a menos de 30 minutos de ti.",
+    "ogImage": "https://cdn.jsdelivr.net/gh/bloguiz/vista-oculta-assets@main/logos/logo-vo-principal-com-texto.png"
+  }
+}

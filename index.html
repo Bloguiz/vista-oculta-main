@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vista Oculta — Miradouros secretos</title>
+    <meta name="description" content="Miradouros secretos, trilhos escondidos e paisagens que quase ninguém conhece." />
+    <meta property="og:title" content="Vista Oculta" />
+    <meta property="og:description" content="Miradouros secretos, trilhos escondidos e paisagens que quase ninguém conhece." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <header class="site-header" id="header">
+      <div class="container">
+        <div class="header-inner">
+          <a href="index.html" class="logo" aria-label="Vista Oculta">
+            <img class="logo-img" src="https://cdn.jsdelivr.net/gh/bloguiz/vista-oculta-assets@main/logos/logo-vo-principal-com-texto.png" alt="Vista Oculta" />
+          </a>
+          <nav class="nav-main">
+            <a href="#posts">Posts</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#contacto">Contacto</a>
+            
+          </nav>
+          <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <nav class="mobile-nav" id="mobileNav">
+      <button class="mobile-nav-close" id="mobileNavClose">×</button>
+      <ul class="mobile-nav-links">
+        <li><a href="#posts">Posts</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        
+      </ul>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-content">
+        <p class="text-label hero-tagline" id="heroTagline">Miradouros secretos · Desde sempre</p>
+        <h1 class="heading-display hero-title" id="heroTitle">Onde a cidade<br />acaba e a <em>vista</em> começa</h1>
+        <p class="text-body hero-description" id="heroDesc">Roteiros, caminhos e ângulos que quase ninguém conhece. Lugares escondidos a menos de 30 minutos de ti.</p>
+        <div class="hero-actions">
+          <a href="#posts" class="btn-primary" id="heroCtaPrimary">Ver posts</a>
+          <a href="#sobre" class="btn-text" id="heroCtaSecondary">Sobre o blog</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div id="heroSlides"></div>
+        <div class="hero-image-overlay">
+          <p class="overlay-title" id="heroTitleOverlay">Vista Oculta</p>
+          <p class="overlay-price" id="heroPriceOverlay">A descobrir</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="featured-piece" id="featured"></section>
+
+    <section class="collections" id="posts">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-header-left">
+            <p class="text-label" id="postsLabel">Descobrir</p>
+            <h2 class="heading-display section-title" id="postsTitle">Todos os posts</h2>
+            <p class="text-body section-subtitle" id="postsSubtitle">Roteiros, trilhos e miradouros escondidos — atualizados todas as semanas</p>
+          </div>
+        </div>
+        <div class="posts-grid" id="postsGrid"></div>
+        <div class="empty-state" id="emptyState" style="display:none">
+          <h2>Ainda não há posts</h2>
+          
+        </div>
+      </div>
+    </section>
+
+    <section class="featured-piece" id="sobre">
+      <div class="container">
+        <div class="featured-grid">
+          <div class="featured-content" style="order:1">
+            <p class="text-label featured-label" id="aboutLabel">Sobre o projeto</p>
+            <h2 class="heading-display featured-title" id="aboutTitle">Um blog para quem olha em volta</h2>
+            <div id="aboutParagraphs">
+              <p class="text-body featured-description">O Vista Oculta nasceu da vontade de mostrar o que os guias turísticos ignoram. Aqui encontras miradouros, trilhos e ângulos escondidos — explicados passo a passo, com fotos reais e o melhor momento do dia para subir.</p>
+              <p class="text-body featured-description">Cada lugar que partilhamos existe. Cada caminho foi percorrido. Cada imagem foi tirada por nós.</p>
+            </div>
+            <a href="#posts" class="btn-primary" id="aboutCta">Explorar posts</a>
+          </div>
+          <div class="featured-image-wrapper" style="order:2">
+            <div class="featured-image">
+              <img id="aboutImage" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=900" alt="Vista panorâmica" />
+            </div>
+            <div class="featured-badge" id="aboutBadge">Desde 2026</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="collections" id="contacto">
+      <div class="container container--narrow" style="text-align:center">
+        <p class="text-label" id="contactLabel">Contacto</p>
+        <h2 class="heading-display section-title" id="contactTitle" style="margin-top:12px">Conheces um lugar escondido?</h2>
+        <p class="text-body" id="contactDesc" style="margin-bottom:32px">Envia-nos a tua descoberta. Se fizer sentido para o blog, publicamos com crédito.</p>
+        <a href="mailto:blogueirinho00@gmail.com" class="btn-primary" id="contactEmail">blogueirinho00@gmail.com</a>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo-wrap">
+              <img class="footer-logo-img" src="https://cdn.jsdelivr.net/gh/bloguiz/vista-oculta-assets@main/logos/logo-vo-sem-texto.png" alt="Vista Oculta" />
+            </div>
+            <p class="footer-tagline" id="footerTagline">Miradouros secretos, trilhos escondidos e paisagens que quase ninguém conhece.</p>
+            <div class="footer-contact-info">
+              <p><a href="mailto:blogueirinho00@gmail.com" id="footerEmail">blogueirinho00@gmail.com</a></p>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h4 class="footer-column-title">Navegar</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Início</a></li>
+              <li><a href="#posts">Posts</a></li>
+              <li><a href="#sobre">Sobre</a></li>
+              <li><a href="#contacto">Contacto</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            
+          
+          <div class="footer-column footer-about">
+            <h4 class="footer-column-title">Sobre este site</h4>
+            <p>Blog independente sobre exploração local. Feito com HTML, CSS e JavaScript puro.</p>
+            <p id="footerCredits">Imagens: Unsplash</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="footer-copyright" id="footerCopyright">© 2026 Vista Oculta</p>
+          <div class="footer-social" id="footerSocial">
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">Newsletter</a>
+          </div>
+        </div>
+        <div class="bloguiz-signature">
+          Desenvolvido por <a href="https://bloguiz.com" target="_blank" rel="noopener">BLOGUIZ</a>
+        </div>
+      </div>
+    </footer>
+<script src="config.js"></script>
+
+    <script src="assets/blog.js"></script>
+  </body>
+</html>
