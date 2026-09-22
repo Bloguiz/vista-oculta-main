@@ -71,6 +71,9 @@ a { color: inherit; text-decoration: none; }
   font-size: 1.05rem;
   line-height: 1.75;
   color: var(--charcoal-soft);
+  text-align: justify;
+text-justify: inter-word;
+hyphens: auto;   
 }
 
 /* ===== Layout ===== */
