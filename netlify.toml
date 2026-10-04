@@ -1,5 +1,7 @@
 [build]
   publish = "."
+  # Gera o sitemap.xml a partir do posts.json em cada deploy
+  command = "node gerar-sitemap.js"
 
 [[headers]]
   for = "/admin/*"
