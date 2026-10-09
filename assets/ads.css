@@ -1,0 +1,46 @@
+.affiliate-ads {
+  padding: 2rem 1rem;
+  border-top: 1px solid rgba(31, 92, 74, 0.14);
+  text-align: center;
+}
+
+.affiliate-ads__title {
+  margin: 0 0 1.25rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.affiliate-ads__grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.affiliate-ads__item {
+  flex: 0 1 360px;
+  min-width: 0;
+}
+
+.affiliate-ads__item img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.affiliate-ads__caption {
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+  overflow-wrap: anywhere;
+}
+
+.affiliate-ads__caption a {
+  text-decoration: underline;
+}
