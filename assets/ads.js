@@ -2,7 +2,7 @@
 /*Clver*/
 
 /*Hilltop*/
-<script>
+
 (function(dxhr){
 var d = document,
     s = d.createElement('script'),
@@ -13,7 +13,7 @@ s.async = true;
 s.referrerPolicy = 'no-referrer-when-downgrade';
 l.parentNode.insertBefore(s, l);
 })({})
-</script>
+
 
 /*adsterra*/
 
