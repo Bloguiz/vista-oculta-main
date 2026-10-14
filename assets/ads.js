@@ -15,15 +15,3 @@ l.parentNode.insertBefore(s, l);
 })({})
 
 
-/*adsterra*/
-
-(function() {
-    var script = document.createElement('script');
-    script.async = true;
-    script.setAttribute('data-cfasync', 'false');
-    script.src = "https://bauval.org/21/4509bce3f6ea1eb806a577c68afd75c4";
-    
-    // Injeta o script no cabeçalho ou no corpo da página
-    document.head.appendChild(script);
-})();
-
