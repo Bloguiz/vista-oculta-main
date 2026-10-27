@@ -1,17 +1,61 @@
 <!doctype html>
-<html lang="pt"><head>
-<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/style.css" />
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Die Elf</title>
-</head><body>
-<header class="hd"><div class="wrap in">
-  <a href="index.html" class="logo"><i></i><span data-name>Die Elf</span></a>
-  <nav class="nav"><a href="index.html#posts" data-t="nav_posts">Posts</a><a href="index.html#sobre" data-t="nav_about">Sobre & Contacto</a>
-    <div class="lang" role="group" aria-label="Idioma / Sprache"><button data-l="pt">PT</button><button data-l="de">DE</button></div></nav>
+<meta name="description" content="Blog sobre futebol alemão em português e alemão: Bundesliga, análise e cultura.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%23d20515' stroke='%23f2b705' stroke-width='4'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<header><div class="w">
+<a href="index.html" class="logo"><i></i><span>Die Elf</span></a>
+<nav><a href="index.html#posts" data-t="nav_posts"></a><a href="index.html#sobre" data-t="nav_about"></a>
+<div class="lang" role="group" aria-label="Idioma / Sprache"><button data-l="pt">PT</button><button data-l="de">DE</button></div></nav>
 </div></header>
-<main id="post"></main>
-<footer class="ft"><div class="wrap"><b data-name>Die Elf</b><span>© <span data-year>2026</span> <span data-name>Die Elf</span> · <span data-t="rights">Todos os direitos reservados.</span></span></div></footer>
-<script src="dados.js"></script><script src="assets/app.js"></script>
-</body></html>
+<main id="post" class="post"></main>
+
+<footer><div class="w"><b>Die Elf</b><span>© <span id="yr"></span> Die Elf · <span data-t="rights"></span></span></div></footer>
+<script>
+/* ===== ARTIGOS COMPLETOS: cola aqui o texto de cada post (mesmo id que em index.html) ===== */
+const POSTS=[
+{id:"exemplo-primeiro-post",date:"2026-10-15",image:"",
+title:{pt:"Exemplo: título do teu primeiro post sobre a Bundesliga",de:"Beispiel: Titel deines ersten Beitrags über die Bundesliga"},
+body:{pt:`<p>Este é um post de exemplo. Apaga-o ou substitui o texto no ficheiro <strong>index.html</strong>.</p><h2>Estrutura sugerida</h2><ul><li>Contexto: o jogo, a equipa ou o tema</li><li>Análise: o que aconteceu e porquê</li><li>Fontes: de onde vêm os dados</li></ul><blockquote>Confirma sempre resultados, datas e números numa fonte oficial antes de publicar.</blockquote>`,
+de:`<p>Dies ist ein Beispielbeitrag. Lösche ihn oder ersetze den Text in der Datei <strong>index.html</strong>.</p><h2>Vorgeschlagene Struktur</h2><ul><li>Kontext: das Spiel, das Team oder das Thema</li><li>Analyse: was passiert ist und warum</li><li>Quellen: woher die Daten stammen</li></ul><blockquote>Prüfe Ergebnisse, Daten und Zahlen immer in einer offiziellen Quelle, bevor du veröffentlichst.</blockquote>`}},
+{id:"exemplo-segundo-post",date:"2026-10-14",image:"",
+title:{pt:"Exemplo: como adicionar um post novo",de:"Beispiel: so fügst du einen neuen Beitrag hinzu"},
+body:{pt:`<p>Copia um bloco <code>{ ... }</code> da lista, cola-o no início e muda o <strong>id</strong>, a <strong>data</strong>, o título e o texto. Separa os blocos com vírgula.</p><p>Para uma imagem, coloca o endereço no campo <strong>image</strong>. Sem imagem, o site mostra um fundo com as cores do blogue.</p>`,
+de:`<p>Kopiere einen Block <code>{ ... }</code> aus der Liste, füge ihn am Anfang ein und ändere <strong>id</strong>, <strong>date</strong>, Titel und Text. Trenne die Blöcke mit einem Komma.</p><p>Für ein Bild trage die Adresse im Feld <strong>image</strong> ein. Ohne Bild zeigt die Seite einen Hintergrund in den Farben des Blogs.</p>`}}
+];
+const T={
+pt:{nav_posts:"Posts",nav_about:"Sobre & Contacto",hero_tag:"Bundesliga · Análise · Cultura",hero_title:"O futebol <em>alemão</em>, sem ruído",hero_desc:"Análises, tática e histórias da Bundesliga e arredores, em português e alemão.",cta_posts:"Ver posts",cta_about:"Sobre o blog →",latest:"Último post",read:"Ler artigo",posts_label:"Descobrir",posts_title:"Todos os posts",posts_sub:"Análises e histórias do futebol alemão",about_label:"Sobre o projeto",about_title:"Futebol alemão, explicado",about_text:"Um blog sobre futebol alemão: Bundesliga, 2. Bundesliga, DFB-Pokal e seleção. Escrevemos em português e em alemão e indicamos as fontes dos dados que usamos.",contact_label:"Contacto",contact_title:"Fala connosco",contact_text:"Sugestões, correções ou ideias para um artigo? Escreve-nos.",back:"Voltar à página inicial",nf_title:"Post não encontrado",nf_text:"O artigo que procuras não existe ou foi removido.",fallback:"Este artigo só está disponível em português.",rights:"Todos os direitos reservados."},
+de:{nav_posts:"Beiträge",nav_about:"Über uns & Kontakt",hero_tag:"Bundesliga · Analyse · Kultur",hero_title:"Deutscher <em>Fußball</em>, ohne Rauschen",hero_desc:"Analysen, Taktik und Geschichten aus der Bundesliga und drumherum – auf Portugiesisch und Deutsch.",cta_posts:"Beiträge ansehen",cta_about:"Über den Blog →",latest:"Neuester Beitrag",read:"Artikel lesen",posts_label:"Entdecken",posts_title:"Alle Beiträge",posts_sub:"Analysen und Geschichten aus dem deutschen Fußball",about_label:"Über das Projekt",about_title:"Deutscher Fußball, erklärt",about_text:"Ein Blog über deutschen Fußball: Bundesliga, 2. Bundesliga, DFB-Pokal und Nationalmannschaft. Wir schreiben auf Portugiesisch und Deutsch und nennen die Quellen unserer Daten.",contact_label:"Kontakt",contact_title:"Schreib uns",contact_text:"Anregungen, Korrekturen oder Ideen für einen Artikel? Schreib uns.",back:"Zurück zur Startseite",nf_title:"Beitrag nicht gefunden",nf_text:"Der gesuchte Artikel existiert nicht oder wurde entfernt.",fallback:"Dieser Artikel ist nur auf Portugiesisch verfügbar.",rights:"Alle Rechte vorbehalten."}
+};
+let lang="pt";try{lang=localStorage.getItem("lang")||"pt"}catch(e){}
+if(!T[lang])lang="pt";
+const $=s=>document.querySelector(s),t=k=>T[lang][k]||T.pt[k]||"";
+const L=o=>(o&&(o[lang]||o.pt))||"";
+const esc=s=>String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const fd=d=>new Date(d+"T12:00").toLocaleDateString(lang=="de"?"de-DE":"pt-PT",{day:"2-digit",month:"long",year:"numeric"});
+const P=POSTS.slice().sort((a,b)=>b.date.localeCompare(a.date));
+function base(){
+  document.documentElement.lang=lang;
+  document.querySelectorAll("[data-t]").forEach(e=>e.innerHTML=t(e.dataset.t));
+  document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("on",b.dataset.l==lang));
+  $("#yr").textContent=new Date().getFullYear();
+}
+document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>{lang=b.dataset.l;try{localStorage.setItem("lang",lang)}catch(e){}render()});
+function render(){
+  base();
+  const id=new URLSearchParams(location.search).get("id"),p=P.find(x=>x.id==id),v=$("#post");
+  if(!p){document.title=t("nf_title");v.innerHTML=`<div class="top"><div class="w"><h1>${t("nf_title")}</h1><p class="meta">${t("nf_text")}</p></div></div><div class="back" style="padding-top:2rem"><a class="btn" href="index.html">${t("back")}</a></div>`;return}
+  const ok=!!(p.body[lang]&&p.title[lang]);
+  document.title=L(p.title)+" — Die Elf";
+  v.innerHTML=`<div class="top"><div class="w n"><p class="lbl">Die Elf</p><h1>${esc(L(p.title))}</h1><p class="meta">${fd(p.date)}</p></div></div>${p.image?`<div class="pimg"><img src="${esc(p.image)}" alt="${esc(L(p.title))}"></div>`:""}<article class="w n art-b">${ok?"":`<div class="note">${t("fallback")}</div>`}${L(p.body)}</article><div class="back"><a class="tl" href="index.html#posts">← ${t("back")}</a></div>`;
+}
+render();
+</script>
+</body>
+</html>
